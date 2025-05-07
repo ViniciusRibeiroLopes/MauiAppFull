@@ -1,4 +1,7 @@
-﻿namespace MauiAppComCadastro;
+﻿using System.Globalization;
+using System.Text;
+
+namespace MauiAppComCadastro;
 
 public partial class ListaProdutosPage : ContentPage
 {
@@ -31,22 +34,23 @@ public partial class ListaProdutosPage : ContentPage
 
     private void FiltrarPorCategoria(object sender, EventArgs e)
     {
-
         string categoriaSelecionada = filtroCategoriaPicker.SelectedItem?.ToString() ?? "Todas";
+        string categoriaSelecionadaNormalizada = RemoveDiacritics(categoriaSelecionada.ToLowerInvariant());
 
-        if (categoriaSelecionada == "Todas")
+        if (categoriaSelecionadaNormalizada == "todas")
         {
             produtosListView.ItemsSource = MainPage.Produtos
                 .OrderBy(p => !p.Validade.HasValue)
                 .ThenBy(p => p.Validade)
                 .ToList();
         }
-        else if (categoriaSelecionada == "Outros")
+        else if (categoriaSelecionadaNormalizada == "outros")
         {
             produtosListView.ItemsSource = MainPage.Produtos
-                .Where(p => p.Categoria != "Alimentos" &&
-                            p.Categoria != "Eletrônicos" &&
-                            p.Categoria != "Vestuário")
+                .Where(p =>
+                    RemoveDiacritics(p.Categoria.ToLowerInvariant()) != "alimentos" &&
+                    RemoveDiacritics(p.Categoria.ToLowerInvariant()) != "eletronicos" &&
+                    RemoveDiacritics(p.Categoria.ToLowerInvariant()) != "vestuario")
                 .OrderBy(p => !p.Validade.HasValue)
                 .ThenBy(p => p.Validade)
                 .ToList();
@@ -54,12 +58,19 @@ public partial class ListaProdutosPage : ContentPage
         else
         {
             produtosListView.ItemsSource = MainPage.Produtos
-                .Where(p => p.Categoria == categoriaSelecionada)
+                .Where(p => RemoveDiacritics(p.Categoria.ToLowerInvariant()) == categoriaSelecionadaNormalizada)
                 .OrderBy(p => !p.Validade.HasValue)
                 .ThenBy(p => p.Validade)
                 .ToList();
         }
     }
+    public static string RemoveDiacritics(string text)
+    {
+        return new string(text.Normalize(NormalizationForm.FormD)
+            .Where(c => CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
+            .ToArray());
+    }
+
     private async void OnItemTapped(object sender, ItemTappedEventArgs e)
     {
         if (e.Item is Produto produto)
