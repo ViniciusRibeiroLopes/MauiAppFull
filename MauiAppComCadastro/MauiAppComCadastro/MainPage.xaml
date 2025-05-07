@@ -65,6 +65,9 @@
                             BackgroundColor="#1F1F1F" />
             </StackLayout>
 
+            <Button Text="Selecionar Imagem" Clicked="SelecionarImagem_Clicked"/>
+            <Image x:Name="previewImagem" HeightRequest="100" WidthRequest="100"/>
+
             <Button Text="Adicionar Produto"
                     Clicked="AdicionarProduto_Clicked"
                     BackgroundColor="#4CAF50"

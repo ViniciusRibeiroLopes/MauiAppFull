@@ -36,7 +36,8 @@
         <ListView x:Name="produtosListView"
                   SeparatorVisibility="Default"
                   HasUnevenRows="True"
-                  BackgroundColor="Transparent">
+                  BackgroundColor="Transparent"
+                  ItemTapped="OnItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -75,11 +76,14 @@
                                         </DataTrigger>
                                     </Label.Triggers>
                                 </Label>
+                                <Image Source="{Binding CaminhoImagem}" HeightRequest="100" WidthRequest="100"/>
                             </StackLayout>
                         </Frame>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Label x:Name="alertaLabel" TextColor="Red" FontAttributes="Bold" Margin="10"/>
+        <Label x:Name="resumoLabel" FontSize="16" FontAttributes="Bold" Margin="10,10"/>
     </StackLayout>
 </ContentPage>

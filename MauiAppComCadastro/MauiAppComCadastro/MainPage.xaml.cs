@@ -1,8 +1,10 @@
-﻿namespace MauiAppComCadastro
+﻿using static MauiAppComCadastro.MainPage;
+
+namespace MauiAppComCadastro
 {
     public partial class MainPage : ContentPage
     {
-        public static List<Produto> Produtos { get; set; } = new();
+        public static List<Produto> Produtos { get; set; } = ProdutoStorage.CarregarProdutos();
 
         public MainPage()
         {
@@ -32,7 +34,8 @@
                     Preco = preco,
                     Descricao = descricao,
                     Categoria = categoria,
-                    Validade = validade
+                    Validade = validade,
+                    CaminhoImagem = caminhoImagemSelecionada
                 });
 
                 mensagemLabel.Text = $"Produto '{nome}' adicionado com sucesso!";
@@ -43,6 +46,10 @@
                 categoriaEntry.Text = string.Empty;
                 validadePicker.Date = DateTime.Today;
                 temValidadeSwitch.IsToggled = false;
+                previewImagem.Source = null;
+                caminhoImagemSelecionada = null;
+
+                ProdutoStorage.SalvarProdutos(Produtos);
             }
             else
             {
@@ -54,18 +61,35 @@
         {
             await Navigation.PushAsync(new ListaProdutosPage());
         }
-    }
 
+        private string caminhoImagemSelecionada;
+
+        private async void SelecionarImagem_Clicked(object sender, EventArgs e)
+        {
+            var resultado = await FilePicker.PickAsync(new PickOptions
+            {
+                PickerTitle = "Selecione uma imagem",
+                FileTypes = FilePickerFileType.Images
+            });
+
+            if (resultado != null)
+            {
+                caminhoImagemSelecionada = resultado.FullPath;
+                previewImagem.Source = ImageSource.FromFile(caminhoImagemSelecionada);
+            }
+        }
+    }
     public class Produto
     {
         public bool EstaVencido => Validade.HasValue && Validade.Value < DateTime.Today;
-        public string Nome { get; set; }
+        public string Nome { get; set; } = string.Empty;
         public decimal Preco { get; set; }
-        public string PrecoFormatado => Preco.ToString("C");
-        public string Descricao { get; set; }
+        public string Descricao { get; set; } = string.Empty;
         public DateTime? Validade { get; set; }
-        public string Categoria { get; set; }
+        public string Categoria { get; set; } = string.Empty;
+        public string? CaminhoImagem { get; set; }
 
         public string ValidadeFormatada => Validade?.ToString("dd/MM/yyyy") ?? "Sem validade";
+        public string PrecoFormatado => $"R$ {Preco:F2}";
     }
 }
