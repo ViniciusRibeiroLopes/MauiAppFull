@@ -1,0 +1,38 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35913.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiAppComCadastro", "MauiAppComCadastro\MauiAppComCadastro\MauiAppComCadastro.csproj", "{87D1CDE6-7D8D-4252-94BD-E59D561D7243}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiAppComCadastro.Droid", "MauiAppComCadastro\MauiAppComCadastro.Droid\MauiAppComCadastro.Droid.csproj", "{AF9FB042-07E2-4BB3-A4CD-8721FFEE4E33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiAppComCadastro.WinUI", "MauiAppComCadastro\MauiAppComCadastro.WinUI\MauiAppComCadastro.WinUI.csproj", "{D687CFF8-B7E8-4B15-B80E-6A1DD1612F48}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{87D1CDE6-7D8D-4252-94BD-E59D561D7243}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87D1CDE6-7D8D-4252-94BD-E59D561D7243}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87D1CDE6-7D8D-4252-94BD-E59D561D7243}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87D1CDE6-7D8D-4252-94BD-E59D561D7243}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF9FB042-07E2-4BB3-A4CD-8721FFEE4E33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF9FB042-07E2-4BB3-A4CD-8721FFEE4E33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF9FB042-07E2-4BB3-A4CD-8721FFEE4E33}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{AF9FB042-07E2-4BB3-A4CD-8721FFEE4E33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF9FB042-07E2-4BB3-A4CD-8721FFEE4E33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF9FB042-07E2-4BB3-A4CD-8721FFEE4E33}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{D687CFF8-B7E8-4B15-B80E-6A1DD1612F48}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{D687CFF8-B7E8-4B15-B80E-6A1DD1612F48}.Debug|Any CPU.Build.0 = Debug|x64
+		{D687CFF8-B7E8-4B15-B80E-6A1DD1612F48}.Release|Any CPU.ActiveCfg = Release|x64
+		{D687CFF8-B7E8-4B15-B80E-6A1DD1612F48}.Release|Any CPU.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2C571A30-EFB8-462C-868C-EDA7310442D5}
+	EndGlobalSection
+EndGlobal

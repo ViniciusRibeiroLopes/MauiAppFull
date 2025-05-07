@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:system="clr-namespace:System;assembly=netstandard"
+             x:Class="MauiAppComCadastro.ListaProdutosPage"
+             BackgroundColor="#121212">
+
+    <StackLayout Padding="20" Spacing="15">
+        <Label Text="Lista de Produtos"
+               FontSize="30"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               TextColor="White" />
+
+        <Picker x:Name="filtroCategoriaPicker"
+            Title="Filtrar por Categoria"
+            SelectedIndexChanged="FiltrarPorCategoria"
+            BackgroundColor="#1F1F1F"
+            TextColor="White"
+            TitleColor="Gray"
+            WidthRequest="130"
+            HeightRequest="70"
+            HorizontalOptions="Start">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Todas</x:String>
+                    <x:String>Alimentos</x:String>
+                    <x:String>Eletrônicos</x:String>
+                    <x:String>Vestuário</x:String>
+                    <x:String>Outros</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+
+        <ListView x:Name="produtosListView"
+                  SeparatorVisibility="Default"
+                  HasUnevenRows="True"
+                  BackgroundColor="Transparent">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame Margin="0,5"
+                               Padding="15"
+                               BackgroundColor="#1E1E1E"
+                               CornerRadius="12"
+                               BorderColor="#333"
+                               HasShadow="True">
+                            <StackLayout Spacing="5">
+                                <Label Text="{Binding Nome}"
+                                       FontAttributes="Bold"
+                                       FontSize="18"
+                                       TextColor="White" />
+
+                                <Label Text="{Binding Descricao}"
+                                       FontSize="14"
+                                       TextColor="#CCCCCC" />
+
+                                <Label Text="{Binding Categoria}"
+                                       FontSize="13"
+                                       TextColor="#64B5F6" />
+
+                                <Label Text="{Binding PrecoFormatado}"
+                                       FontSize="14"
+                                       TextColor="#81C784" />
+
+                                <Label Text="{Binding ValidadeFormatada}"
+                                       FontSize="13"
+                                       TextColor="LightGray">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label"
+                                                     Binding="{Binding EstaVencido}"
+                                                     Value="True">
+                                            <Setter Property="TextColor" Value="Red" />
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                            </StackLayout>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

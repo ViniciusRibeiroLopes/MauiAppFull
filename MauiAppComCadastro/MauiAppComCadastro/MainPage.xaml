@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppComCadastro.MainPage"
+             BackgroundColor="#121212">
+
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="15">
+            <Label Text="Cadastro de Produto"
+                   FontSize="26"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="White" />
+
+            <Entry x:Name="nomeEntry"
+                   Placeholder="Nome do produto"
+                   BackgroundColor="#1F1F1F"
+                   TextColor="White"
+                   PlaceholderColor="Gray"
+                   HeightRequest="45" />
+
+            <Entry x:Name="precoEntry"
+                   Placeholder="Preço"
+                   Keyboard="Numeric"
+                   BackgroundColor="#1F1F1F"
+                   TextColor="White"
+                   PlaceholderColor="Gray"
+                   HeightRequest="45" />
+
+            <Entry x:Name="descricaoEntry"
+                   Placeholder="Descrição"
+                   BackgroundColor="#1F1F1F"
+                   TextColor="White"
+                   PlaceholderColor="Gray"
+                   HeightRequest="45" />
+
+            <Entry x:Name="categoriaEntry"
+                   Placeholder="Categoria"
+                   BackgroundColor="#1F1F1F"
+                   TextColor="White"
+                   PlaceholderColor="Gray"
+                   HeightRequest="45" />
+
+            <HorizontalStackLayout Spacing="10">
+                <Label Text="Produto com validade?"
+                       TextColor="White"
+                       VerticalOptions="Center" />
+
+                <Switch x:Name="temValidadeSwitch"
+                        OnColor="#4CAF50"
+                        ThumbColor="White"
+                        Toggled="TemValidadeSwitch_Toggled" />
+            </HorizontalStackLayout>
+
+            <StackLayout x:Name="validadeStack" IsVisible="False">
+                <Label Text="Validade do produto"
+                       FontAttributes="Bold"
+                       TextColor="White" />
+
+                <BoxView HeightRequest="10" Opacity="0"/>
+                
+                <DatePicker x:Name="validadePicker"
+                            Format="dd/MM/yyyy"
+                            TextColor="White"
+                            BackgroundColor="#1F1F1F" />
+            </StackLayout>
+
+            <Button Text="Adicionar Produto"
+                    Clicked="AdicionarProduto_Clicked"
+                    BackgroundColor="#4CAF50"
+                    TextColor="White"
+                    CornerRadius="8"
+                    HeightRequest="50" />
+
+            <Button Text="Ver Lista de Produtos"
+                    Clicked="IrParaLista_Clicked"
+                    BackgroundColor="#2196F3"
+                    TextColor="White"
+                    CornerRadius="8"
+                    HeightRequest="50" />
+
+            <Label x:Name="mensagemLabel"
+                   TextColor="LightGreen"
+                   FontAttributes="Italic"
+                   HorizontalOptions="Center" />
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>
